@@ -1,9 +1,13 @@
-import { Text, View } from "react-native"
+import { Platform, StatusBar, View } from "react-native"
 
-export const ScreenWrapper = () => {
+export const ScreenWrapper = ({Children}) => {
+    let statusBarHeight = StatusBar.currentHeight ? StatusBar.currentHeight: Platform.OS=='ios' ? 30 : 0;
+
     return (
-        <View>
-            <Text>Wrapper Screen</Text>
+        <View style={{ paddingTop: statusBarHeight}}>
+            {
+                Children
+            }
         </View>
     )
 }
