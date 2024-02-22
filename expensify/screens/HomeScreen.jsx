@@ -2,6 +2,7 @@ import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import { ScreenWrapper } from "../components/ScreenWrapper";
 import { colors } from "../theme";
 import randomImage from "../assets/images/randomImage";
+import { EmptyList } from "../components/emptyList";
 
 var items = [
     {
@@ -48,8 +49,9 @@ export const HomeScreen = () => {
                 </View>
                 <View style={{height: 430}}>
                     <FlatList 
-                        data={items}
+                        data={[]}
                         numColumns={2}
+                        ListEmptyComponent={<EmptyList message={"You haven't recorded any trips yet"}/>}
                         keyExtractor={item => item.id}
                         showsVerticalScrollIndicator={false}
                         columnWrapperStyle={{
