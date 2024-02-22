@@ -40,7 +40,7 @@ export const HomeScreen = () => {
                                     className="mr-8 relative"
                                 >
                                     <Text style={{color: themeColors.text}} className={textClass}>{category}</Text>
-                                    { isActive && <Text className="font-extrabold text-orange-400 -mt-3 ml-2">___________</Text> }
+                                    { isActive && <Text className="font-extrabold text-orange-400 -mt-3 ml-2">_________</Text> }
                                 </TouchableOpacity>
                             )
                         })
