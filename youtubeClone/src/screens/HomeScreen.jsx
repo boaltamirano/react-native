@@ -1,9 +1,10 @@
 import { Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from "react-native"
 import * as Icon from "react-native-feather"
 import { themeColors } from "../theme"
-import { categories, shortVideos } from "../constants"
+import { categories, shortVideos, videos } from "../constants"
 import { useState } from "react"
 import { ShortVideoCard } from "../components/ShortVideoCard"
+import { VideoCard } from "../components/VideoCard"
 
 export const HomeScreen = () => {
 
@@ -53,6 +54,10 @@ export const HomeScreen = () => {
                         }
                     </ScrollView>
                 </View>
+
+                {/* Suggested video */}
+                <VideoCard video={videos[1]} />
+
                 {/* short videos */}
                 <View className="mt-2 py-5 space-y-3 border-t-zinc-700 border-b-zinc-700 border-4 border-l-0 border-r-0">
                     <View className="mx-4 flex-row items-center space-x-2">
@@ -72,6 +77,13 @@ export const HomeScreen = () => {
                         }
                     </ScrollView>
                 </View>
+
+                {/* Videos */}
+                <ScrollView showsVerticalScrollIndicator={false}>
+                    {
+                        videos.map((video, index) => <VideoCard video={video} key={index}/>)
+                    }
+                </ScrollView>
             </ScrollView>
         </View>
     )
