@@ -1,22 +1,27 @@
 import { SafeAreaView } from "react-native-safe-area-context"
-import { Bars3CenterLeftIcon, ShoppingBagIcon, ShoppingCartIcon } from 'react-native-heroicons/solid'
+import { Bars3CenterLeftIcon, ShoppingCartIcon } from 'react-native-heroicons/solid'
 import { ScrollView, Text, TouchableOpacity, View } from "react-native"
 import { categories, featuredFruits } from "../constants"
 import { themeColors } from "../theme"
 import { useState } from "react"
 import { FruitCard } from "../components/FruitCard"
 import { FruitCardSales } from "../components/FruitCardSales"
+import { useNavigation } from "@react-navigation/native"
 
 export const HomeScreen = () => {
 
     const [activeCategory, setActiveCategory] = useState('Oranges');
+    const navigation = useNavigation();
 
     return (
         <SafeAreaView className="flex-1 bg-orange-50">
             {/* Top Bar */}
             <View className="mx-5 flex-row justify-between items-center">
                 <Bars3CenterLeftIcon size="30" color="black" />
-                <TouchableOpacity className="p-2 rounded-xl bg-orange-100">
+                <TouchableOpacity
+                    className="p-2 rounded-xl bg-orange-100"
+                    onPress={() => navigation.navigate('Cart')}
+                >
                     <ShoppingCartIcon size="25" color="orange" />
                 </TouchableOpacity>
             </View>
@@ -59,16 +64,16 @@ export const HomeScreen = () => {
 
             {/* hot sales */}
             <View className="mt-8 pl-5 space-y-1" >
-                <Text style={{color: themeColors.text}} className="text-xl font-bold">
+                <Text style={{ color: themeColors.text }} className="text-xl font-bold">
                     Hot Sales
                 </Text>
                 <ScrollView
                     horizontal
                     showsHorizontalScrollIndicator={false}
-                    style={{overflow: 'visible'}}
+                    style={{ overflow: 'visible' }}
                 >
                     {
-                        [...featuredFruits].reverse().map((fruit, index) => <FruitCardSales fruit={fruit} key={index}/>)
+                        [...featuredFruits].reverse().map((fruit, index) => <FruitCardSales fruit={fruit} key={index} />)
                     }
                 </ScrollView>
             </View>
